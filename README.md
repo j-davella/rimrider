@@ -2,7 +2,7 @@
 
 A parody of Rimrunner. It's the same red-rock world, but you ride a motocross bike that morphs into a fast aerobatic glider. Rip across the mesa, hit a jump or a rim, press G, and the bike folds itself into a sailplane in mid-air.
 
-Play: https://j-davella.github.io/Rimrider/
+Play: https://j-davella.github.io/rimrider/
 
 One HTML file, three.js r128 from a CDN, no build step. Open `index.html` in a browser, or serve the folder.
 
