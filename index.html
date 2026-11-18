@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Rimrunner</title>
+<title>Rimrider</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;800&display=swap" rel="stylesheet">
@@ -202,28 +202,27 @@ body.phone .deskonly{display:none}
 </div>
 
 <div id="toast"></div>
-<div id="hint"><kbd>H</kbd> controls &nbsp; <kbd>N</kbd> map &nbsp; <kbd>U</kbd> sound</div>
+<div id="hint"><kbd>F1</kbd> controls &nbsp; <kbd>N</kbd> map &nbsp; <kbd>U</kbd> sound</div>
 <div class="card" id="help" hidden>
   <div class="helpbox">
     <h2>Controls</h2>
     <div class="hcols">
       <section><h3>Driving</h3><dl>
-        <dt><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></dt><dd>Gas, steer, brake, then reverse</dd>
-        <dt><kbd>I</kbd></dt><dd>Gas with road lock: on a road or the circuit the truck steers itself and slows for the bends, steer to let go</dd>
+        <dt><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></dt><dd>Throttle, steer, brake, then reverse</dd>
+        <dt><kbd>I</kbd></dt><dd>Throttle with road lock: on a road or the circuit the bike steers itself and slows for the bends, steer to let go</dd>
         <dt><kbd>J</kbd> <kbd>L</kbd> <kbd>K</kbd></dt><dd>Steer left / right, brake</dd>
-        <dt><kbd>B</kbd></dt><dd>Handbrake (swing the tail)</dd>
-        <dt>Fans</dt><dd>With the wings folded two fans suck it into the ground, so it corners and climbs like nothing else</dd>
+        <dt><kbd>B</kbd></dt><dd>Rear brake (back it in sideways)</dd>
         <dt>Loops</dt><dd>Take the orange lane on the left at 100+ km/h. Too slow and you fall off the top</dd>
       </dl></section>
       <section><h3>Flying</h3><dl>
-        <dt><kbd>C</kbd></dt><dd>Grow the glider wings / fold them away. Hit a jump or a rim first</dd>
+        <dt><kbd>G</kbd></dt><dd>Morph: bike to glider and back. Hit a jump or a rim first, or pull back on the ground at speed to take off</dd>
         <dt><kbd>W</kbd> <kbd>S</kbd></dt><dd>Nose down / nose up</dd>
         <dt><kbd>A</kbd> <kbd>D</kbd></dt><dd>Roll left / right</dd>
         <dt><kbd>Q</kbd> <kbd>E</kbd></dt><dd>Rudder</dd>
         <dt><kbd>Shift</kbd></dt><dd>Hold for extra control throw</dd>
         <dt><kbd>F</kbd> <kbd>R</kbd></dt><dd>Flaps down / up, 10° steps to 50°</dd>
-        <dt><kbd>T</kbd> <kbd>G</kbd> <kbd>/</kbd></dt><dd>Trim nose down / nose up / neutral (<kbd>,</kbd> <kbd>.</kbd> work too)</dd>
-        <dt><kbd>X</kbd> <kbd>Y</kbd> <kbd>Z</kbd></dt><dd>Aileron-rudder mix, sticky stick on / off, center the sticky stick</dd>
+        <dt><kbd>Y</kbd> <kbd>H</kbd> <kbd>/</kbd></dt><dd>Trim nose down / nose up / neutral (<kbd>,</kbd> <kbd>.</kbd> work too)</dd>
+        <dt><kbd>X</kbd> <kbd>;</kbd> <kbd>Z</kbd></dt><dd>Aileron-rudder mix, sticky stick on / off, center the sticky stick</dd>
         <dt>Landing</dt><dd>It rights itself and shrugs off hard landings, but not a canyon wall</dd>
       </dl></section>
       <section><h3>Camera, map, game</h3><dl>
@@ -231,7 +230,6 @@ body.phone .deskonly{display:none}
         <dt><kbd>N</kbd></dt><dd>Big / small map</dd>
         <dt><kbd>-</kbd> <kbd>=</kbd></dt><dd>Zoom the map out / in</dd>
         <dt><kbd>Tab</kbd></dt><dd>Teleport map (Freestyle only)</dd>
-        <dt><kbd>C</kbd></dt><dd>Wings out / folded</dd>
         <dt><kbd>O</kbd></dt><dd>Tweaks panel</dd>
         <dt><kbd>U</kbd></dt><dd>Sound on / off</dd>
         <dt><kbd>P</kbd></dt><dd>Pause</dd>
@@ -239,7 +237,7 @@ body.phone .deskonly{display:none}
         <dt><kbd>1</kbd>–<kbd>9</kbd> <kbd>0</kbd></dt><dd>On the menu: game mode</dd>
       </dl></section>
     </div>
-    <div class="go">H or Esc to close</div>
+    <div class="go">F1 or Esc to close</div>
   </div>
 </div>
 <button id="twbtn" type="button">Tweaks</button>
@@ -253,7 +251,7 @@ body.phone .deskonly{display:none}
 
 <div class="card" id="title">
   <div>
-    <h1>Rimrunner</h1>
+    <h1>Rimrider</h1>
     <div class="modes phoneonly" style="margin:8px 0 10px"><button id="startbtn" type="button">Start</button><button id="tiltbtn" type="button">Tilt: on</button></div>
     <p id="modedesc"></p>
     <div class="modes" id="modes">
@@ -267,10 +265,8 @@ body.phone .deskonly{display:none}
     <div class="modes" id="gfx"><button data-g="full">Full</button><button data-g="lite">Lite</button><button data-g="potato">Potato</button></div>
     <div class="sm" style="display:none">Lives</div>
     <div class="modes" id="livespick" style="display:none"><button data-l="0">Off</button><button data-l="3">3</button><button data-l="5">5</button><button data-l="10">10</button><button data-l="inf">Unlimited</button></div>
-    <p class="keyline"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> drive, then fly &nbsp; <kbd>C</kbd> wings &nbsp; <kbd>F</kbd><kbd>R</kbd> flaps &nbsp; <kbd>V</kbd> views &nbsp; <kbd>H</kbd> every control</p>
-    <div class="sm" style="margin:-6px 0 6px">Wing</div>
-    <div class="modes" id="wingpick"><button data-w="glider">Glider: floaty, stays up</button><button data-w="speed">Speed: fast, acrobatic, smoke</button></div>
-    <div class="sm" style="margin:2px 0 6px">Controls</div>
+    <p class="keyline"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> ride, then fly &nbsp; <kbd>G</kbd> morph &nbsp; <kbd>F</kbd><kbd>R</kbd> flaps &nbsp; <kbd>Y</kbd><kbd>H</kbd> trim &nbsp; <kbd>V</kbd> views &nbsp; <kbd>F1</kbd> every control</p>
+    <div class="sm" style="margin:-6px 0 6px">Controls</div>
     <div class="modes" id="ctlpick"><button data-c="keys">Keyboard</button><button data-c="phone">Phone: tilt + touch</button></div>
     <div class="go deskonly">Pick a mode, then press Enter</div>
     <div class="sm phoneonly">Hold the phone sideways like a steering wheel. Tilt to steer; in the air, tilt it toward or away from you for nose up or down. Start sets the level.</div>
@@ -294,7 +290,7 @@ body.phone .deskonly{display:none}
 <div id="touch" hidden>
   <button class="tb" id="tbGas" data-hold="gas" type="button">GAS</button>
   <button class="tb" id="tbBrake" data-key="KeyK" type="button">BRAKE</button>
-  <button class="tb s" id="tbWings" data-key="KeyC" type="button">WINGS</button>
+  <button class="tb s" id="tbWings" data-key="KeyG" type="button">MORPH</button>
   <button class="tb s" id="tbLock" data-key="KeyI" type="button">ROAD LOCK</button>
   <button class="tb s" id="tbFlapD" data-key="KeyF" type="button">FLAP +</button>
   <button class="tb s" id="tbFlapU" data-key="KeyR" type="button">FLAP −</button>
@@ -308,7 +304,7 @@ body.phone .deskonly{display:none}
     <button class="tb s" data-key="KeyP" type="button">❚❚</button>
   </div>
 </div>
-<div class="card" id="turn" hidden><div><h2>Turn it sideways</h2><p>Rimrunner plays in landscape: hold the phone like a steering wheel.</p></div></div>
+<div class="card" id="turn" hidden><div><h2>Turn it sideways</h2><p>Rimrider plays in landscape: hold the phone like a steering wheel.</p></div></div>
 <div class="card" id="paused" hidden>
   <div><h2>Paused</h2><div class="go deskonly">P to keep going, M for the menu</div><div class="modes phoneonly" style="margin:6px 0 0"><button type="button" data-k="KeyP">Keep going</button><button type="button" data-k="KeyM">Menu</button></div></div>
 </div>
@@ -330,7 +326,7 @@ const GFXS = {
 };
 const GFX_PICK = (() => {
   let saved = null;
-  try { saved = new URLSearchParams(location.search).get('gfx') || localStorage.getItem('rimrunner-gfx'); } catch (e) {}
+  try { saved = new URLSearchParams(location.search).get('gfx') || localStorage.getItem('rimrider-gfx'); } catch (e) {}
   if (GFXS[saved]) return { id: saved, auto: false };
   // nothing chosen: guess from what the browser says about the machine (memory is only reported by some browsers)
   const mem = navigator.deviceMemory || 0, cores = navigator.hardwareConcurrency || 0, phone = /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent);
@@ -679,8 +675,8 @@ function addRoad(ctrl, closed) {
     for (let k = 0; k < rr.length - 1; k++) if (rr[k + 1][0] - rr[k][1] < minGap) for (let i = rr[k][1]; i <= rr[k + 1][0]; i++) f[i] = true;
   };
   // tunnels wherever the mountain is well above the road, bridges wherever the ground is well below it
-  const tun = tH.map((t, i) => t - h[i] > 17 && i > 30 && i < n - 31);
-  tidy(tun, 26, 14);
+  // Rimrider has no tunnels: where the mountain is above the road the road cuts a gorge through it instead
+  const tun = tH.map(() => false);
   const brg = tH.map((t, i) => !tun[i] && h[i] - t > 5 && i > 3 && i < n - 4);
   tidy(brg, 5, 10);
   for (let i = 0; i < n; i++) if (tun[i]) brg[i] = false;
@@ -1493,173 +1489,166 @@ function addCockpit(g, parts, o) {
 
 // ---------- Glide Buggy: a small trophy truck with long-travel swing arms and wings that grow out of the roll hoop ----------
 function buildBuggy() {
-  // g is the sprung body: the render loop pitches and rolls it on its suspension inside the outer group, which is what the physics moves
-  // g0 is the sprung body. The bodywork is modelled small inside g and g is stretched by TS to trophy-truck size
-  // (about 5.2 m long, 2.4 m over the tires); suspension and wheels sit in g0 at full size so the tires stay round.
-  const TS = new V3(1.3, 1.1, 1.45), TRACK = 1.0, BASE = 1.38;
-  const outer = new THREE.Group(), g0 = new THREE.Group(), g = new THREE.Group(), parts = { props: [], discs: [], flaps: [], strobes: [], wheelSpin: [], frontSteer: [], flames: [], legs: [], body: g0 };
-  outer.add(g0); g0.add(g); g.scale.copy(TS);
-  const unscale = (o, rx = false) => { if (rx) o.scale.set(1 / TS.x, 1 / TS.z, 1 / TS.y); else o.scale.set(1 / TS.x, 1 / TS.y, 1 / TS.z); return o; };
-  const paint = PH_(0xf26a1b, { roughness: 0.28, clearcoat: 0.9 }), white = PH_(0xf4f4f0, { roughness: 0.4, clearcoat: 0.4 }), tubeM = M_(0x1b1d20, { roughness: 0.4, metalness: 0.6 });
+  // the morph bike: a motocross bike that, on G, grows a glider around itself. A smooth pod closes over the bike and the
+  // rider goes prone inside it, the forks and swingarm fold the wheels up into the belly, long slim wings grow out of
+  // the sides and a V-tail boom out of the back. All the morphing is done by the render loop (pt.bike) from P.wing.
+  // Body frame: -z forward, y up, the ground about 0.78 below the origin when it is sitting on its wheels.
+  const outer = new THREE.Group(), g = new THREE.Group();
+  const parts = { props: [], discs: [], flaps: [], strobes: [], wheelSpin: [], frontSteer: [], flames: [], legs: [], body: g };
+  outer.add(g); const bk = new THREE.Group(); g.add(bk);
+  const paint = PH_(0x1f6fe0, { roughness: 0.25, clearcoat: 0.9 }), white = PH_(0xf4f4f0, { roughness: 0.35, clearcoat: 0.5 });
+  const lime = PH_(0xc6f01e, { roughness: 0.3, clearcoat: 0.8 }), tubeM = M_(0x24262a, { roughness: 0.35, metalness: 0.7 });
   const dark = M_(0x141517, { roughness: 0.75 }), rub = M_(0x101011, { roughness: 0.95, envMapIntensity: 0.05 }), alu = M_(0xb9bdc3, { roughness: 0.3, metalness: 0.9 });
-  const shock = M_(0xf5c400, { roughness: 0.4 }), blue = PH_(0x1e63c8, { roughness: 0.3, clearcoat: 0.8 });
-  const lampM = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xfff4d0, emissiveIntensity: 1.3 }), tailM = new THREE.MeshStandardMaterial({ color: 0xff2a1a, emissive: 0xff2010, emissiveIntensity: 0.9 });
-  const wingM = PH_(0xf4f4f0, { roughness: 0.45, clearcoat: 0.3 }); wingM.side = THREE.DoubleSide;
-  const box = (w, h, d, m, x, y, z, p = g) => mk(new THREE.BoxGeometry(w, h, d), m, p, x, y, z);
-  const T = (a, b, r = 0.024) => rod(g, a, b, r, tubeM);
-  // a side profile ([z, y] points, nose at -z) extruded across the car to width w, with rounded edges
-  const ext = (sh, w, bev = 0.025) => { const geo = new THREE.ExtrudeGeometry(sh, { depth: w, bevelEnabled: true, bevelSize: bev, bevelThickness: bev, bevelSegments: 2, curveSegments: 10 }); geo.rotateY(-Math.PI / 2); geo.translate(w / 2, 0, 0); return geo; };
-  const slab = (pts, w, m, x = 0) => { const sh = new THREE.Shape(); pts.forEach(([z, y], i) => i ? sh.lineTo(z, y) : sh.moveTo(z, y)); return mk(ext(sh, w), m, g, x, 0, 0); };
-  // trophy-truck body: long sloping hood, closed cab with glass, a short bed behind it with the spare and the bypass shocks
-  const glass = new THREE.MeshStandardMaterial({ color: 0x1c2733, roughness: 0.05, metalness: 0.7, transparent: true, opacity: 0.72, envMap: envTex, envMapIntensity: 1 });
-  const amber = new THREE.MeshStandardMaterial({ color: 0xffa020, emissive: 0xff8a00, emissiveIntensity: 0.8 });
-  slab([[-1.62, -0.12], [-1.72, 0.0], [-1.7, 0.16], [-0.62, 0.36], [-0.5, 0.38], [0.58, 0.38], [0.6, 0.42], [1.5, 0.42], [1.64, 0.2], [1.58, -0.1], [1.3, -0.2], [-1.4, -0.2]], 1.06, paint);
-  slab([[-1.5, -0.19], [-1.3, -0.3], [1.2, -0.3], [1.45, -0.19]], 0.7, dark);
-  // cab: painted lower half, tinted glass band, roof, pillars and mirrors
-  slab([[-0.5, 0.36], [-0.34, 0.58], [0.5, 0.58], [0.58, 0.36]], 0.94, paint);
-  slab([[-0.34, 0.58], [-0.12, 0.85], [0.4, 0.85], [0.5, 0.58]], 0.88, glass);
-  box(0.94, 0.04, 0.58, paint, 0, 0.885, 0.14);
-  [-1, 1].forEach(sd => {
-    rod(g, [sd * 0.45, 0.58, -0.35], [sd * 0.45, 0.87, -0.13], 0.025, paint); rod(g, [sd * 0.45, 0.58, 0.5], [sd * 0.45, 0.87, 0.41], 0.03, paint);
-    rod(g, [sd * 0.45, 0.58, 0.08], [sd * 0.45, 0.87, 0.08], 0.018, paint);
-    box(0.12, 0.07, 0.03, dark, sd * 0.55, 0.62, -0.3); rod(g, [sd * 0.46, 0.6, -0.3], [sd * 0.5, 0.62, -0.3], 0.012, dark);
-  });
-  // hood: centre stripe and scoop
-  { const s = box(0.26, 0.02, 1.1, white, 0, 0.27, -1.12); s.rotation.x = -0.187; }
-  { const s = box(0.36, 0.07, 0.42, dark, 0, 0.33, -0.84); s.rotation.x = -0.187; box(0.3, 0.05, 0.02, rub, 0, 0.35, -1.04); }
-  // door panels fill the side out to the fenders between the wheels, with a black rocker under them over the fan pods
-  [-1, 1].forEach(sd => { slab([[-0.3, 0.44], [0.3, 0.44], [0.3, 0.02], [-0.3, 0.02]], 0.3, paint, sd * 0.71); box(0.36, 0.05, 0.62, dark, sd * 0.71, 0.0, 0); });
-  // door number boards and side stripes
-  { const nc = document.createElement('canvas'); nc.width = 128; nc.height = 96; const cx = nc.getContext('2d');
-    cx.fillStyle = '#f4f4f0'; cx.fillRect(0, 0, 128, 96); cx.fillStyle = '#1e63c8'; cx.fillRect(0, 0, 128, 10); cx.fillRect(0, 86, 128, 10);
-    cx.fillStyle = '#121212'; cx.font = 'bold 72px Arial, sans-serif'; cx.textAlign = 'center'; cx.fillText('77', 64, 76);
-    const numM = new THREE.MeshStandardMaterial({ map: new THREE.CanvasTexture(nc), roughness: 0.5 });
-    [-1, 1].forEach(sd => { mk(new THREE.PlaneGeometry(0.4, 0.25), numM, g, sd * 0.9, 0.24, 0).rotation.y = sd * Math.PI / 2; }); }
-  [-1, 1].forEach(sd => { box(0.02, 0.04, 0.6, blue, sd * 0.895, 0.08, 0); box(0.02, 0.04, 0.6, blue, sd * 0.895, 0.41, 0); box(0.02, 0.03, 0.78, white, sd * 0.475, 0.55, 0.04); });
-  // box fenders: a deep arch over each wheel and a flat flare on top, with room for the wheel to come up into it
-  { const sh = new THREE.Shape(); sh.absarc(0, 0, 0.75, 0.12, Math.PI - 0.12, false); sh.absarc(0, 0, 0.65, Math.PI - 0.12, 0.12, true);
-    const fg = ext(sh, 0.44, 0.015);
-    [[-1, -0.95], [1, -0.95], [-1, 0.95], [1, 0.95]].forEach(([sd, z]) => { mk(fg, paint, g, sd * TRACK / TS.x, -0.2, z * BASE / 0.95 / TS.z).scale.set(1.2 / TS.x, 1 / TS.y, 1 / TS.z); }); }
-  // nose: grille, light boxes and a tube pre-runner bumper
-  box(0.5, 0.16, 0.03, dark, 0, 0.04, -1.715);
-  [-1, 1].forEach(sd => {
-    box(0.2, 0.08, 0.03, lampM, sd * 0.38, 0.08, -1.7); box(0.04, 0.04, 0.03, amber, sd * 0.5, -0.02, -1.69);
-    T([sd * 0.55, -0.12, -1.6], [sd * 0.5, -0.1, -1.86], 0.03); T([sd * 0.5, -0.1, -1.86], [sd * 0.28, 0.12, -1.84], 0.026);
-    // tail: light strips, exhausts, bumper
-    box(0.05, 0.22, 0.03, tailM, sd * 0.48, 0.24, 1.6); rod(g, [sd * 0.22, -0.14, 1.3], [sd * 0.24, -0.12, 1.7], 0.04, alu);
-    T([sd * 0.5, -0.06, 1.5], [sd * 0.5, -0.06, 1.74], 0.03);
-  });
-  T([-0.5, -0.1, -1.86], [0.5, -0.1, -1.86], 0.03); T([-0.28, 0.12, -1.84], [0.28, 0.12, -1.84], 0.026); T([-0.5, -0.06, 1.74], [0.5, -0.06, 1.74], 0.03);
-  // bed: floor, rails, the spare lying flat, and two bypass shocks per side climbing to the cage
-  box(0.92, 0.02, 0.86, dark, 0, 0.43, 1.05);
-  [-1, 1].forEach(sd => box(0.06, 0.08, 0.92, paint, sd * 0.5, 0.47, 1.05));
-  { const sp = pivot(g, 0, 0.56, 1.06); sp.rotation.x = Math.PI / 2; unscale(sp, true);
-    mk(new THREE.TorusGeometry(0.26, 0.12, 10, 22), rub, sp); mk(new THREE.CylinderGeometry(0.17, 0.17, 0.14, 14).rotateX(Math.PI / 2), alu, sp);
-    rod(g, [-0.32, 0.56, 1.06], [0.32, 0.56, 1.06], 0.015, shock); }
-  [-1, 1].forEach(sd => [0.66, 0.8].forEach(z => {
-    rod(g, [sd * 0.4, 0.44, z + 0.1], [sd * 0.36, 0.92, z - 0.1], 0.042, shock);
-    rod(g, [sd * 0.4, 0.44, z + 0.1], [sd * 0.38, 0.62, z + 0.03], 0.05, blue);
-    rod(g, [sd * 0.46, 0.56, z], [sd * 0.46, 0.78, z - 0.04], 0.03, alu);
-  }));
-  // downforce fans: a ducted fan in a pod on each sill, between the wheels. They suck the car down while the wings are folded.
-  parts.fans = [];
-  [-1, 1].forEach(sd => {
-    const pod = unscale(pivot(g, sd * 0.6, -0.1, 0.02));
-    mk(new THREE.CylinderGeometry(0.23, 0.25, 0.13, 24, 1, true), (() => { const m = dark.clone(); m.side = THREE.DoubleSide; return m; })(), pod);
-    mk(new THREE.TorusGeometry(0.235, 0.022, 8, 28).rotateX(Math.PI / 2), blue, pod, 0, 0.065, 0);
-    box(0.44, 0.012, 0.02, alu, 0, 0.07, 0, pod); box(0.02, 0.012, 0.44, alu, 0, 0.07, 0, pod);
-    const fan = new THREE.Group(); pod.add(fan); parts.fans.push(fan);
-    mk(new THREE.CylinderGeometry(0.055, 0.055, 0.08, 12), alu, fan);
-    for (let i = 0; i < 7; i++) { const bl = pivot(fan, 0, 0, 0); bl.rotation.y = i / 7 * Math.PI * 2; box(0.075, 0.008, 0.17, white, 0, 0, 0.13, bl).rotation.z = 0.5; }
-  });
-  // exo-cage over the bed, chase light, and the light bar across the roof
-  [-1, 1].forEach(sd => { T([sd * 0.42, 0.9, 0.4], [sd * 0.44, 0.47, 1.5], 0.028); T([sd * 0.42, 0.9, 0.4], [sd * 0.3, 0.98, 0.42], 0.028); });
-  T([-0.3, 0.98, 0.42], [0.3, 0.98, 0.42], 0.028); T([-0.44, 0.47, 1.5], [0.44, 0.47, 1.5], 0.028); T([-0.43, 0.7, 0.95], [0.43, 0.7, 0.95], 0.022);
-  box(0.12, 0.08, 0.05, amber, 0, 1.02, 0.43);
-  box(0.84, 0.07, 0.08, dark, 0, 0.94, -0.1); box(0.06, 0.02, 0.3, dark, -0.4, 0.915, 0.0); box(0.06, 0.02, 0.3, dark, 0.4, 0.915, 0.0);
-  for (let i = -3; i <= 3; i++) box(0.1, 0.045, 0.01, lampM, i * 0.115, 0.94, -0.141);
-  box(0.12, 0.08, 0.3, dark, 0.32, 0.93, 0.25);
-  // seat, driver, wheel
-  box(0.4, 0.5, 0.08, dark, 0, 0.34, 0.36).rotation.x = -0.2; box(0.4, 0.06, 0.4, dark, 0, 0.1, 0.16);
-  const pilot = new THREE.Group(); g.add(pilot); parts.pilot = pilot; pilot.scale.set(1 / TS.x, 1, 1 / TS.z); pilot.position.z = 0.05;
-  mk(new THREE.CylinderGeometry(0.15, 0.17, 0.42, 12), dark, pilot, 0, 0.34, 0.2).rotation.x = -0.25;
-  mk(new THREE.SphereGeometry(0.14, 18, 14), white, pilot, 0, 0.68, 0.14);
-  mk(new THREE.SphereGeometry(0.142, 18, 10, Math.PI * 1.1, Math.PI * 0.8, 1.0, 0.7), M_(0x111111, { roughness: 0.05, metalness: 0.8 }), pilot, 0, 0.68, 0.14);
-  { const sw = mk(new THREE.TorusGeometry(0.11, 0.012, 8, 20), dark, g, 0, 0.47, -0.25); sw.rotation.x = -0.4; sw.scale.set(1 / TS.x, 1 / TS.y, 1 / TS.z); }
-  // long-travel suspension: two parallel arms per corner hinge well inboard under the tub and the render loop swings them by
-  // that wheel's compression; the hub is turned back by the same angle, so the wheel stays upright and moves almost
-  // straight up and down. Modelled at full droop; the wheel centre sits 0.56 out and 0.3 down from the hinge.
-  const tire = new THREE.LatheGeometry([[0.26, -0.18], [0.43, -0.19], [0.48, -0.15], [0.5, -0.05], [0.5, 0.05], [0.48, 0.15], [0.43, 0.19], [0.26, 0.18]].map(([r, y]) => new THREE.Vector2(r, y)), 22); tire.rotateZ(Math.PI / 2);
-  const rim = new THREE.CylinderGeometry(0.26, 0.26, 0.3, 18); rim.rotateZ(Math.PI / 2);
-  const bead = new THREE.TorusGeometry(0.26, 0.025, 6, 24); bead.rotateY(Math.PI / 2);
-  const knob = new THREE.BoxGeometry(0.35, 0.045, 0.09), spoke = new THREE.BoxGeometry(0.02, 0.48, 0.06);
-  [[-1, -BASE, true], [1, -BASE, true], [-1, BASE, false], [1, BASE, false]].forEach(([sd, z, front]) => {
-    const leg = pivot(g0, sd * (TRACK - 0.56), -0.1, z), W = [sd * 0.56, -0.3, 0];
-    [-0.17, 0.17].forEach(dz => { rod(leg, [0, 0.1, dz], [W[0] - sd * 0.06, W[1] + 0.1, 0], 0.02, alu); rod(leg, [0, -0.08, dz], [W[0] - sd * 0.06, W[1] - 0.08, 0], 0.024, alu); });
-    const sk = new THREE.Group(); g0.add(sk);
-    mk(new THREE.CylinderGeometry(0.05, 0.05, 0.62, 12), shock, sk, 0, 0.16, 0); mk(new THREE.CylinderGeometry(0.02, 0.02, 1, 8), alu, sk);
-    leg.userData.shock = { m: sk, top: new V3(sd * (TRACK - 0.39), 0.38, z), arm: new V3(sd * 0.4, -0.3, 0) };
-    const hub = pivot(leg, W[0], W[1], 0), grp = pivot(hub, 0, 0, 0), spin = new THREE.Group(); grp.add(spin); leg.userData.hub = hub;
-    rod(hub, [-sd * 0.21, -0.13, 0], [-sd * 0.21, 0.15, 0], 0.03, tubeM);
-    mk(tire, rub, spin); mk(rim, alu, spin); mk(bead, blue, spin, sd * 0.15, 0, 0);
-    for (let i = 0; i < 18; i++) { const a = i / 18 * Math.PI * 2, kb = mk(knob, rub, spin, (i % 2 ? 0.025 : -0.025), Math.cos(a) * 0.497, Math.sin(a) * 0.497); kb.rotation.x = a; }
-    for (let i = 0; i < 3; i++) mk(spoke, dark, spin, sd * 0.152, 0, 0).rotation.x = i / 3 * Math.PI;
-    parts.wheelSpin.push(spin); if (front) parts.frontSteer.push(grp); parts.legs.push(leg);
-  });
-  // trophy-truck kit, built at full size in g0: round light pods on the roof, a whip antenna with a flag and an LED tip on
-  // the cage, a window net, and a solid rear axle (diff and housing) on two trailing arms that the render loop keeps
-  // strung between the rear hubs
-  for (const x of [-0.36, -0.12, 0.12, 0.36]) {
-    const pod = mk(new THREE.CylinderGeometry(0.1, 0.085, 0.12, 18).rotateX(Math.PI / 2), dark, g0, x, 1.13, -0.2);
-    mk(new THREE.CircleGeometry(0.082, 18), lampM, pod, 0, 0, -0.062).rotation.y = Math.PI;
-  }
-  rod(g0, [-0.42, 1.07, -0.2], [0.42, 1.07, -0.2], 0.018, tubeM);
-  rod(g0, [0.56, 0.85, 2.1], [0.6, 2.75, 2.2], 0.008, tubeM);
-  mk(new THREE.SphereGeometry(0.03, 8, 6), new THREE.MeshStandardMaterial({ color: 0x40ff60, emissive: 0x30ff50, emissiveIntensity: 1.5 }), g0, 0.6, 2.77, 2.2);
-  { const fl = new THREE.BufferGeometry(); fl.setAttribute('position', new THREE.Float32BufferAttribute([0.6, 2.7, 2.2, 0.6, 2.42, 2.2, 0.6, 2.56, 2.62], 3)); fl.computeVertexNormals();
-    mk(fl, new THREE.MeshBasicMaterial({ color: 0xff7a1a, side: THREE.DoubleSide }), g0); }
-  { const nc = document.createElement('canvas'); nc.width = nc.height = 64; const cx = nc.getContext('2d'); cx.strokeStyle = '#111'; cx.lineWidth = 3;
-    for (let i = 0; i <= 64; i += 12) { cx.beginPath(); cx.moveTo(i, 0); cx.lineTo(i, 64); cx.stroke(); cx.beginPath(); cx.moveTo(0, i); cx.lineTo(64, i); cx.stroke(); }
-    const nt = new THREE.CanvasTexture(nc); nt.wrapS = nt.wrapT = THREE.RepeatWrapping; nt.repeat.set(3, 2);
-    mk(new THREE.PlaneGeometry(0.6, 0.3), new THREE.MeshBasicMaterial({ map: nt, transparent: true, side: THREE.DoubleSide, alphaTest: 0.3 }), g0, -0.6, 0.83, -0.05).rotation.y = Math.PI / 2; }
-  { const housing = mk(new THREE.CylinderGeometry(0.065, 0.065, 1, 12), dark, g0), diff = mk(new THREE.SphereGeometry(0.16, 16, 12), alu, g0);
-    diff.scale.set(1, 0.9, 0.8);
-    const arms = [-1, 1].map(sd => ({ m: mk(new THREE.CylinderGeometry(0.035, 0.035, 1, 10), alu, g0), a: new V3(sd * 0.36, -0.12, BASE - 1.15) }));
-    parts.axle = { housing, diff, arms }; }
+  const gold = M_(0xd8a520, { roughness: 0.3, metalness: 0.8 }), shockM = M_(0xff5a14, { roughness: 0.4 }), chrome = M_(0xdfe3e8, { roughness: 0.12, metalness: 1 });
+  const lampM = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xfff4d0, emissiveIntensity: 1.3 });
+  const glass = new THREE.MeshStandardMaterial({ color: 0x1c2733, roughness: 0.05, metalness: 0.6, transparent: true, opacity: 0.55, envMap: envTex, envMapIntensity: 1 });
+  const wingM = PH_(0xf4f4f0, { roughness: 0.4, clearcoat: 0.4 }); wingM.side = THREE.DoubleSide;
+  const box = (w, h, d, m, x, y, z, p = bk) => mk(new THREE.BoxGeometry(w, h, d), m, p, x, y, z);
+  const T = (a, b, r = 0.022, m = tubeM, p = bk) => rod(p, a, b, r, m);
+  // a side profile ([z, y] points) extruded across the bike to width w
+  const ext = (pts, w, bev = 0.02) => { const sh = new THREE.Shape(); pts.forEach(([z, y], i) => i ? sh.lineTo(z, y) : sh.moveTo(z, y));
+    const geo = new THREE.ExtrudeGeometry(sh, { depth: w, bevelEnabled: true, bevelSize: bev, bevelThickness: bev, bevelSegments: 2, curveSegments: 8 }); geo.rotateY(-Math.PI / 2); geo.translate(w / 2, 0, 0); return geo; };
+  const slab = (pts, w, m, x = 0, p = bk) => mk(ext(pts, w), m, p, x, 0, 0);
+  const RAKE = 0.45, HEAD = new V3(0, 0.28, -0.42), FORK = 0.766, SWP = new V3(0, -0.2, 0.02), SWA = new V3(0, -0.21, 0.7);
 
-  // the glider: two tapered airfoil wings with upswept orange tips and a T-tail on a boom, all scaled from nothing by the render loop
-  const WS = 5.2;
-  const sec = (sd, f) => { const tip = Math.max(0, (f - 0.86) / 0.14), c = 1.2 * (1 - 0.5 * f) * (1 - 0.72 * tip * tip * tip);
-    return [sd * WS * f, 0.3 * f + 0.34 * tip * tip, -0.56 + 0.3 * f + 0.25 * tip * tip, c, 0.14 - 0.04 * f]; };
-  const wing = sd => { const p = pivot(g, sd * 0.3, 0.9, 0.2);
-    mk(loftWing([0, 0.2, 0.4, 0.6, 0.76, 0.86].map(f => sec(sd, f))), wingM, p);
-    mk(loftWing([0.86, 0.9, 0.94, 0.97, 0.99, 1].map(f => sec(sd, f))), paint, p);
-    mk(loftWing([0, 0.04, 0.08].map(f => { const q = sec(sd, f); q[1] += 0.004; q[2] -= 0.004; q[3] += 0.008; return q; })), paint, p);
-    // flap: the inboard trailing edge, hinged along the wing and swung down by the render loop
-    const fo = pivot(p, sd * WS * 0.3, 0.105, 0.295), fl = new THREE.Group(); fo.rotation.z = sd * 0.058; fo.add(fl); parts.flaps.push(fl);
-    mk(loftWing([-1, -0.5, 0, 0.5, 1].map(u => { const f = 0.3 + sd * u * 0.2; return [u * WS * 0.2, 0, -0.15 * (f - 0.3) - 0.012, 0.3 * (1 - 0.5 * f) + 0.02, 0.2]; }), 0, 12), paint, fl);
+  // a knobby wheel in the y-z plane: tire, knobs, gold rim, spokes, hub and a brake disc
+  const wheel = (parent, R, wide) => {
+    const spin = new THREE.Group(); parent.add(spin);
+    mk(new THREE.TorusGeometry(R - 0.065, 0.065 * wide, 10, 30).rotateY(Math.PI / 2), rub, spin);
+    const kn = new THREE.BoxGeometry(0.11 * wide, 0.035, 0.05);
+    for (let i = 0; i < 28; i++) { const a = i / 28 * Math.PI * 2, k = mk(kn, rub, spin, (i % 2 ? 0.03 : -0.03) * wide, Math.cos(a) * (R - 0.005), Math.sin(a) * (R - 0.005)); k.rotation.x = -a; }
+    mk(new THREE.TorusGeometry(R - 0.12, 0.016, 6, 30).rotateY(Math.PI / 2), gold, spin);
+    mk(new THREE.CylinderGeometry(0.05, 0.05, 0.13, 12).rotateZ(Math.PI / 2), alu, spin);
+    for (let i = 0; i < 16; i++) { const a = i / 16 * Math.PI * 2, s = i % 2 ? 0.05 : -0.05;
+      T([s, 0, 0], [s * 0.3, Math.cos(a) * (R - 0.13), Math.sin(a) * (R - 0.13)], 0.004, chrome, spin); }
+    mk(new THREE.CylinderGeometry(R * 0.55, R * 0.55, 0.008, 22).rotateZ(Math.PI / 2), M_(0x8c9096, { roughness: 0.35, metalness: 0.9 }), spin, -0.075, 0, 0);
+    return spin;
+  };
+
+  // ---- frame and engine ----
+  [-1, 1].forEach(sd => {
+    T([sd * 0.03, 0.27, -0.4], [sd * 0.1, 0.13, 0.15], 0.026); T([sd * 0.1, 0.13, 0.15], [sd * 0.1, -0.2, 0.04], 0.026);
+    T([sd * 0.1, 0.13, 0.15], [sd * 0.08, 0.22, 0.72], 0.016); T([sd * 0.1, -0.12, 0.08], [sd * 0.08, 0.2, 0.6], 0.014);
+    T([sd * 0.04, 0.2, -0.4], [sd * 0.07, -0.36, -0.22], 0.022); T([sd * 0.07, -0.36, -0.22], [sd * 0.09, -0.36, 0.0], 0.022);
+    // foot pegs
+    box(0.1, 0.025, 0.06, alu, sd * 0.2, -0.27, 0.1);
+  });
+  T([0, 0.33, -0.41], [0, 0.16, -0.43], 0.045);
+  box(0.24, 0.3, 0.38, M_(0x2a2c30, { roughness: 0.5, metalness: 0.5 }), 0, -0.2, -0.1);
+  { const cyl = pivot(bk, 0, 0.0, -0.18); cyl.rotation.x = 0.35;
+    for (let i = 0; i < 6; i++) box(0.22 - i * 0.008, 0.012, 0.2, alu, 0, i * 0.035 - 0.08, 0, cyl);
+    box(0.17, 0.1, 0.18, dark, 0, 0.14, 0, cyl); }
+  mk(new THREE.CylinderGeometry(0.12, 0.12, 0.05, 20).rotateZ(Math.PI / 2), M_(0x3a3d42, { metalness: 0.7, roughness: 0.3 }), bk, -0.13, -0.22, -0.04);
+  // radiators either side of the frame, behind the shrouds
+  [-1, 1].forEach(sd => { const r = box(0.04, 0.26, 0.2, M_(0x55595f, { metalness: 0.7, roughness: 0.4 }), sd * 0.15, 0.04, -0.3); r.rotation.y = sd * 0.25; });
+  // exhaust: header out of the front of the head, under the right side and up into a silencer beside the rear fender
+  [[0.03, 0.06, -0.33], [0.1, -0.12, -0.36], [0.16, -0.24, -0.2], [0.17, -0.18, 0.04], [0.16, 0.06, 0.24]].reduce((a, b) => { T(a, b, 0.024, chrome); return b; });
+  { const si = mk(new THREE.CylinderGeometry(0.055, 0.05, 0.5, 16), alu, bk); si.position.set(0.16, 0.16, 0.48); si.rotation.x = Math.PI / 2 - 0.22;
+    mk(new THREE.CylinderGeometry(0.03, 0.03, 0.05, 10), dark, bk, 0.16, 0.22, 0.75).rotation.x = Math.PI / 2 - 0.22; }
+  // rear shock with an orange spring
+  T([0, 0.16, 0.05], [0, -0.13, 0.28], 0.04, shockM); T([0, 0.18, 0.04], [0, 0.1, 0.1], 0.03, gold);
+
+  // ---- bodywork: tank, shrouds, seat, side panels, fenders ----
+  { const tk = mk(new THREE.SphereGeometry(1, 20, 14), paint, bk, 0, 0.24, -0.18); tk.scale.set(0.15, 0.1, 0.25); }
+  [-1, 1].forEach(sd => {
+    const sh = slab([[-0.52, 0.32], [-0.18, 0.3], [0.0, 0.18], [-0.08, -0.04], [-0.46, -0.06], [-0.56, 0.12]], 0.02, lime, sd * 0.17);
+    sh.rotation.y = sd * 0.12;
+    slab([[0.14, 0.2], [0.62, 0.26], [0.6, 0.12], [0.18, 0.02]], 0.02, white, sd * 0.11);
+  });
+  // seat: long and flat, from the tank to the tail
+  slab([[-0.3, 0.3], [-0.2, 0.34], [0.62, 0.33], [0.66, 0.27], [-0.25, 0.25]], 0.22, dark);
+  // rear fender: a long white blade sweeping up past the wheel
+  slab([[0.5, 0.25], [0.7, 0.3], [1.12, 0.42], [1.14, 0.38], [0.7, 0.24], [0.5, 0.22]], 0.2, white);
+  // number boards, with the bike's number
+  { const nc = document.createElement('canvas'); nc.width = 128; nc.height = 96; const cx = nc.getContext('2d');
+    cx.fillStyle = '#f4f4f0'; cx.fillRect(0, 0, 128, 96); cx.fillStyle = '#1f6fe0'; cx.font = 'bold 74px Arial, sans-serif'; cx.textAlign = 'center'; cx.fillText('22', 64, 76);
+    const numM = new THREE.MeshStandardMaterial({ map: new THREE.CanvasTexture(nc), roughness: 0.5 });
+    [-1, 1].forEach(sd => { mk(new THREE.PlaneGeometry(0.3, 0.16), numM, bk, sd * 0.135, 0.14, 0.4).rotation.y = sd * Math.PI / 2; });
+    parts.numM = numM; }
+
+  // ---- front end: the fork sits raked at the steering head, turns with the bars, and the lower legs slide up as it
+  // compresses. Built hanging straight down in forkT, which is tilted by the rake (and folded back to fly).
+  const forkT = pivot(bk, HEAD.x, HEAD.y, HEAD.z); forkT.rotation.x = RAKE;
+  const steer = pivot(forkT, 0, 0, 0);
+  box(0.28, 0.04, 0.1, alu, 0, 0.04, 0, steer); box(0.28, 0.035, 0.09, alu, 0, -0.1, 0, steer);
+  [-1, 1].forEach(sd => T([sd * 0.11, 0.06, 0], [sd * 0.11, -0.42, 0], 0.024, gold, steer));
+  // bars: a fat bend on a riser, grips, levers
+  T([0, 0.06, 0.02], [0, 0.13, 0.04], 0.02, alu, steer);
+  [[-0.42, 0.2, 0.13], [-0.2, 0.14, 0.06], [0.2, 0.14, 0.06], [0.42, 0.2, 0.13]].reduce((a, b) => { T(a, b, 0.014, alu, steer); return b; });
+  [-1, 1].forEach(sd => { T([sd * 0.3, 0.17, 0.1], [sd * 0.43, 0.2, 0.13], 0.02, dark, steer); T([sd * 0.24, 0.16, 0.08], [sd * 0.36, 0.13, 0.0], 0.006, dark, steer); });
+  // front number plate with a headlight, and the high front fender off the bottom clamp
+  box(0.26, 0.3, 0.025, white, 0, -0.03, -0.1, steer);
+  mk(new THREE.CircleGeometry(0.045, 16), lampM, steer, 0, -0.06, -0.114).rotation.y = Math.PI;
+  // the front fender sits just over the tire, level with the ground rather than the fork
+  { const fd = pivot(steer, 0, -0.33, 0); fd.rotation.x = -RAKE;
+    slab([[-0.5, 0.02], [-0.22, 0.08], [0.1, 0.08], [0.34, 0.0], [0.32, -0.03], [0.1, 0.04], [-0.22, 0.04], [-0.49, -0.02]], 0.15, white, 0, fd); }
+  const lower = pivot(steer, 0, -FORK, 0);
+  [-1, 1].forEach(sd => T([sd * 0.11, 0.0, 0], [sd * 0.11, 0.42, 0], 0.032, dark, lower));
+  const fw = wheel(lower, 0.37, 0.85);
+  parts.wheelSpin.push(fw); parts.frontSteer.push(steer);
+
+  // ---- rear: swingarm from the pivot behind the engine to the axle, the wheel, chain and sprocket
+  const swing = pivot(bk, SWP.x, SWP.y, SWP.z);
+  [-1, 1].forEach(sd => T([sd * 0.09, 0, 0], [sd * 0.09, SWA.y, SWA.z], 0.03, alu, swing));
+  T([-0.09, -0.02, 0.15], [0.09, -0.02, 0.15], 0.025, alu, swing);
+  { const ch = box(0.02, 0.02, 0.74, dark, -0.12, SWA.y / 2, SWA.z / 2, swing); ch.rotation.x = Math.atan2(-SWA.y, SWA.z); }
+  const rw = pivot(swing, 0, SWA.y, SWA.z), rws = wheel(rw, 0.36, 1.15);
+  mk(new THREE.CylinderGeometry(0.11, 0.11, 0.01, 22).rotateZ(Math.PI / 2), gold, rw, -0.12, 0, 0);
+  parts.wheelSpin.push(rws);
+
+  // ---- rider: helmet with a peak and goggles, jersey, pants, boots. Arms and legs are rods the render loop
+  // re-strings every frame between shoulders / hips and the bars / pegs, so they stay attached as the bike moves.
+  const rider = pivot(bk, 0, 0.3, 0.15), jersey = PH_(0x1f6fe0, { roughness: 0.6 }), pants = M_(0xf4f4f0, { roughness: 0.7 }), boot = M_(0x222222, { roughness: 0.6 });
+  { const t = mk(new THREE.CylinderGeometry(0.15, 0.13, 0.5, 12), jersey, rider, 0, 0.26, -0.08); t.rotation.x = -0.55; t.scale.z = 0.75; }
+  mk(new THREE.BoxGeometry(0.3, 0.14, 0.24), pants, rider, 0, 0.02, 0.04);
+  const head = pivot(rider, 0, 0.62, -0.26);
+  mk(new THREE.SphereGeometry(0.15, 18, 14), white, head);
+  { const pk = box(0.18, 0.015, 0.14, lime, 0, 0.1, -0.15, head); pk.rotation.x = -0.25; }
+  box(0.2, 0.07, 0.06, M_(0x111111, { roughness: 0.05, metalness: 0.8 }), 0, 0.02, -0.13, head);
+  { const ch = box(0.12, 0.08, 0.1, paint, 0, -0.08, -0.13, head); ch.rotation.x = 0.4; }
+  const limb = m => mk(new THREE.CylinderGeometry(1, 1, 1, 8), m, bk);
+  const arms = [-1, 1].map(sd => ({ sd, up: limb(jersey), lo: limb(jersey), hand: mk(new THREE.SphereGeometry(0.045, 8, 6), dark, bk) }));
+  const legs = [-1, 1].map(sd => ({ sd, up: limb(pants), lo: limb(pants), foot: box(0.1, 0.12, 0.22, boot, 0, 0, 0) }));
+  parts.rider = { rider, head, arms, legs };
+
+  // ---- glider pod: a smooth shell that closes over the bike, with a bubble canopy over the rider
+  const pod = pivot(g, 0, 0.02, 0);
+  { const prof = [[0, -1.18], [0.12, -1.12], [0.26, -0.95], [0.38, -0.6], [0.44, -0.2], [0.44, 0.2], [0.38, 0.6], [0.26, 0.95], [0.12, 1.25], [0.05, 1.32]];
+    mk(latheBody(prof.map(([r, y]) => [r, y]), 0.82, 1, 0.92), paint, pod);
+    const cn = mk(new THREE.SphereGeometry(1, 20, 12, 0, Math.PI * 2, 0, Math.PI / 2), glass, pod, 0, 0.3, -0.45); cn.scale.set(0.27, 0.22, 0.58);
+    // a lime stripe down each side and an intake under the nose
+    [-1, 1].forEach(sd => { const s = box(0.01, 0.05, 1.7, lime, sd * 0.36, 0.0, 0.05, pod); s.rotation.y = sd * 0.02; });
+    box(0.2, 0.06, 0.25, dark, 0, -0.38, -0.6, pod); }
+  pod.visible = false;
+
+  // ---- wings: long, slim and efficient, a gentle gull at the root, lime tips, flaps inboard
+  const WS = 4.6;
+  const sec = (sd, f) => { const tip = Math.max(0, (f - 0.9) / 0.1), c = 0.78 * (1 - 0.6 * f) * (1 - 0.6 * tip * tip);
+    return [sd * WS * f, 0.06 * f + 0.22 * tip * tip, -0.36 + 0.24 * f + 0.12 * tip * tip, c, 0.13 - 0.04 * f]; };
+  const wing = sd => { const p = pivot(g, sd * 0.32, 0.14, -0.05);
+    mk(loftWing([0, 0.15, 0.35, 0.55, 0.75, 0.9].map(f => sec(sd, f)), 0.015), wingM, p);
+    mk(loftWing([0.9, 0.93, 0.96, 0.985, 1].map(f => sec(sd, f)), 0.015), lime, p);
+    mk(loftWing([0, 0.05].map(f => { const q = sec(sd, f); q[1] += 0.004; q[2] -= 0.004; q[3] += 0.008; return q; }), 0.015), paint, p);
+    const fo = pivot(p, sd * WS * 0.25, 0.04, 0.24), fl = new THREE.Group(); fo.add(fl); parts.flaps.push(fl);
+    mk(loftWing([-1, -0.5, 0, 0.5, 1].map(u => { const f = 0.25 + sd * u * 0.18; return [u * WS * 0.18, 0, -0.24 * (f - 0.25) - 0.01, 0.78 * (1 - 0.6 * f) * 0.28, 0.18]; }), 0, 12), paint, fl);
     return p; };
-  const tail = pivot(g, 0, 0.62, 1.2);
-  rod(tail, [0, 0, 0], [0, 0.16, 2.3], 0.05, tubeM); rod(tail, [0, 0.16, 2.3], [0, 0.2, 2.75], 0.035, tubeM);
-  const tailStd = pivot(tail, 0, 0, 0), tailV = pivot(tail, 0, 0, 0); tailV.visible = false;
-  { const fin = loftWing([[0, 0, 1.55, 1.05, 0.1], [0.45, 0, 1.82, 0.88, 0.1], [0.9, 0, 2.08, 0.72, 0.1], [1.25, 0, 2.28, 0.6, 0.1]], 0); fin.rotateZ(Math.PI / 2); mk(fin, wingM, tailStd, 0, 0.14, 0);
-    const hs = [[0, 2.24, 0.62], [0.5, 2.3, 0.55], [1.0, 2.38, 0.46], [1.3, 2.46, 0.36], [1.45, 2.54, 0.24], [1.5, 2.62, 0.1]];
-    mk(loftWing(hs.slice().reverse().map(([x, z0, c]) => [-x, 0, z0, c, 0.09]).concat(hs.slice(1).map(([x, z0, c]) => [x, 0, z0, c, 0.09])), 0), wingM, tailStd, 0, 1.4, 0);
-    [-1, 1].forEach(sd => mk(loftWing(hs.slice(3).map(([x, z0, c]) => [sd * x, 0, z0 - 0.003, c + 0.006, 0.1]), 0), paint, tailStd, 0, 1.4, 0));
-    const bul = mk(new THREE.SphereGeometry(0.07, 12, 10), paint, tailStd, 0, 1.4, 2.5); bul.scale.set(1, 1, 5.5); }
-  // speed-wing tail: a swept red V (butterfly) tail with white tips, and a smoke nozzle out the back of the boom
+  // tail: a slim boom out of the back of the pod, a red-and-white V-tail and the smoke nozzle
+  const tail = pivot(g, 0, 0.08, 1.15);
+  T([0, 0, 0], [0, 0.12, 2.3], 0.045, paint, tail); T([0, 0.12, 2.3], [0, 0.15, 2.7], 0.03, paint, tail);
+  const tailStd = pivot(tail, 0, 0, 0), tailV = pivot(tail, 0, 0, 0);
   { const red = PH_(0xd81e2a, { roughness: 0.3, clearcoat: 0.9 });
-    const vs = [[0, 2.1, 0.75], [0.4, 2.3, 0.6], [0.8, 2.52, 0.45], [1.1, 2.7, 0.32], [1.25, 2.8, 0.2]];
+    const vs = [[0, 2.05, 0.6], [0.35, 2.22, 0.5], [0.7, 2.4, 0.38], [0.95, 2.55, 0.27], [1.08, 2.62, 0.17]];
     [-1, 1].forEach(sd => {
-      const pv = pivot(tailV, 0, 0.2, 0); pv.rotation.z = sd * 0.62;
+      const pv = pivot(tailV, 0, 0.15, 0); pv.rotation.z = sd * 0.62;
       mk(loftWing(vs.slice(0, 4).map(([x, z0, c]) => [sd * x, 0, z0, c, 0.09]), 0), red, pv);
       mk(loftWing(vs.slice(3).map(([x, z0, c]) => [sd * x, 0, z0, c, 0.09]), 0), white, pv);
     });
-    mk(new THREE.CylinderGeometry(0.045, 0.07, 0.25, 12).rotateX(Math.PI / 2), alu, tailV, 0, 0.2, 2.82);
-    parts.smokeAt = pivot(tailV, 0, 0.2, 3.0); }
+    mk(new THREE.CylinderGeometry(0.04, 0.06, 0.22, 12).rotateX(Math.PI / 2), alu, tailV, 0, 0.15, 2.75);
+    parts.smokeAt = pivot(tailV, 0, 0.15, 2.92); }
   parts.tailStd = tailStd; parts.tailV = tailV;
   parts.glide = { L: wing(-1), R: wing(1), tail };
   [parts.glide.L, parts.glide.R, tail].forEach(o => { o.visible = false; });
+  parts.bike = { bk, forkT, steer, lower, swing, rw, pod, RAKE, FORK, SWA, swA0: Math.atan2(-SWA.y, SWA.z), swL: Math.hypot(SWA.y, SWA.z), lean: 0, tuck: 0 };
   return { g: outer, parts };
 }
 
@@ -1671,10 +1660,10 @@ const WINGS = {
   // acro: a symmetric wing (flies the same upside down), and the stick commands a rotation rate the way an aerobatic
   // plane's big surfaces do: roll / pitch / yaw rates in rad/s at full stick, it stops dead when you let go and holds
   // whatever attitude you left it in. Weak pitch stability, no auto-coordination, a fuselage that holds knife edge.
-  speed: { span: 0.8, chord: 0.9, sweep: 0.2, S: 12, cl0: 0, cd0: 0.0028, kInd: 0.016, airDrag: 0.05, aStall: 0.3, trim: 0.022, gn: { elev: 9, ail: 22, rud: 6, stab: 7, beta: 6, damp: [3.2, 2.2, 1.6] },
+  speed: { span: 1, chord: 1, sweep: 0, S: 12, cl0: 0, cd0: 0.0028, kInd: 0.016, airDrag: 0.05, aStall: 0.3, trim: 0.022, gn: { elev: 9, ail: 22, rud: 6, stab: 7, beta: 6, damp: [3.2, 2.2, 1.6] },
     acro: { roll: 3.0, pitch: 2.6, g: 5, yaw: 1.5, side: 0.9, track: 9 } },
 };
-let wingId = 'glider';
+let wingId = 'speed';
 const wheelDef = (M, share, p, steer = false) => { const k = M * 9.8 * share / 0.05; return { p: new V3(...p), k, c: 2 * 0.7 * Math.sqrt(k * M * share), steer }; };
 const hardPts = a => a.map(q => new V3(...q));
 const AIRCRAFT = {};
@@ -1683,14 +1672,15 @@ const AIRCRAFT = {};
 // a lot of shove from a standstill (accMax); pwr sets the top speed. Traction is deliberately far better than
 // any real tire (grip, offGrip), the mass is treated as sitting at axle height (cgH) so it cannot trip over that
 // grip, and steerA asks the front wheels for a set cornering force at any speed.
-AIRCRAFT.buggy = { name: 'Glide Buggy', car: true, wings: true, model: BG.g, parts: BG.parts, M: 320, S: 16, I: new V3(380, 520, 300),
-  wheels: [[-1.0, -1.38, true], [1.0, -1.38, true], [-1.0, 1.38, false], [1.0, 1.38, false]].map(([x, z, f]) => ({ p: new V3(x, -0.9, z), k: 6500, k2: 45000, c: 900, c2: 12000, bump: 0.6, steer: f, front: f })),
-  hardV: 14, gear: BG.parts.legs, gearArm: 0.56, gearL: Math.hypot(0.56, 0.3), gearDrop: 0.3, noFlip: true, crashV: 45, wheelR: 0.5, pwr: 400000, accMax: 32, fan: 26, jumpG: 0.8, grip: 2.4, offGrip: 1.25, steerA: 60, cgH: 0.72, rollK: 0.012,
-  hard: hardPts([[0, 1.05, 0.25]]),
+AIRCRAFT.buggy = { name: 'Morph Moto', car: true, wings: true, model: BG.g, parts: BG.parts, M: 320, S: 16, I: new V3(380, 520, 300),
+  // the physics rides on four contact points, a narrow pair under each wheel, so it can't fall over: the lean is drawn
+  wheels: [[-0.42, -0.75, true], [0.42, -0.75, true], [-0.42, 0.72, false], [0.42, 0.72, false]].map(([x, z, f]) => ({ p: new V3(x, -0.9, z), k: 6500, k2: 45000, c: 900, c2: 12000, bump: 0.6, steer: f, front: f })),
+  hardV: 14, noFlip: true, crashV: 45, wheelR: 0.37, pwr: 150000, accMax: 17, fan: 20, jumpG: 0.8, grip: 2.2, offGrip: 1.2, steerA: 60, cgH: 0.72, rollK: 0.012,
+  hard: hardPts([[0, 1.0, -0.1]]),
   thrust: 0, vmax: 60, cl0: 0.3, aStall: 0.27, cd0: 0.01, kInd: 0.025, airDrag: 0.15, gn: { elev: 5, ail: 8, rud: 4, stab: 20, beta: 7, damp: [5, 3, 4] }, vref: 22, trim: 0.05, flaps: true, flapMax: 50, flapSteps: 5, flapCL: 1.125, flapCD: 0.25,
-  cam: { d: 10, h: 2.9 }, size: 7.5, eye: new V3(0, 0.76, 0.1), wingCam: new V3(-2, 1.0, 0.7),
+  cam: { d: 6.5, h: 2.0 }, size: 4.5, eye: new V3(0, 0.98, -0.3), wingCam: new V3(-1.6, 0.8, 0.5),
   panel: { asi: [250, [0, 50, 100, 150, 200, 250], [[0, 200, '#2fbf5a'], [200, 250, '#e23b3b']]], eng: 'tq' },
-  drop: new V3(0, -0.3, 0), spawnBack: 4, vSpawn: 24, fireScale: 1.2, debris: [0xf26a1b, 0x1b1d20, 0xf4f4f0] };
+  drop: new V3(0, -0.3, 0), spawnBack: 4, vSpawn: 24, fireScale: 1, debris: [0x1f6fe0, 0x141517, 0xf4f4f0] };
 // the rearmost hard points of anything with a tail are marked as skids: a tail strike scrapes instead of crashing
 Object.values(AIRCRAFT).forEach(a => { if (a.car || a.boat || !a.hard.length) return; const mz = Math.max(...a.hard.map(h => h.z)); a.hard.forEach(h => { h.tail = mz > 1 && h.z > 0.75 * mz; }); });
 let AC = null, acId = 'buggy';
@@ -1707,7 +1697,7 @@ let mixOn = true, sightOn = true;
 let view = 'chase';
 const flyCam = new V3(); let flyCamSet = false;
 let best = 0;
-try { best = parseInt(localStorage.getItem('rimrunner-best') || '0', 10) || 0; } catch (e) { best = 0; }
+try { best = parseInt(localStorage.getItem('rimrider-best') || '0', 10) || 0; } catch (e) { best = 0; }
 
 const game = { state: 'title', mode: 'thermal', round: 1, score: 0, time: 90, balls: 6, roundHits: 0, t: 0, warnAt: 0, pen: 0 };
 const prevPos = new V3();
@@ -1745,7 +1735,7 @@ const MODE_INFO = {
   pylon: { name: 'Pylon Race', desc: 'Two laps through eight air gates, then back through the start. Fly between the pylons and under the banner. The green banner is your next gate. Hit a pylon and it costs you 5 seconds.' },
   canyon: { name: 'Canyon Run', desc: 'Three kilometers of red rock canyon, rings standing on the floor. Drive them flat out or glide them low. Every missed ring is +3 seconds, every crash is +5. Go over the rim and you’ll miss them all, coward.' },
 };
-const bestKey = m => 'rimrunner-best-' + m;
+const bestKey = m => 'rimrider-best-' + m;
 function getBest(m) { try { const v = parseFloat(localStorage.getItem(bestKey(m))); return isFinite(v) ? v : null; } catch (e) { return null; } }
 function setBest(m, v) { try { localStorage.setItem(bestKey(m), String(v)); } catch (e) {} }
 const fmtTime = t => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, '0')}`;
@@ -1942,8 +1932,8 @@ function respawn() {
 Object.assign(MODE_INFO, {
   balloon: { name: 'Balloon Pop', desc: 'Twenty-five balloons drifting over the field. Fly through them. Pop them back to back, within 4 seconds of each other, for a combo multiplier. 90 seconds.' },
   deadstick: { name: 'Deadstick', desc: 'You’re high and far out with the wings out and nothing but gravity. Glide back and touch down on the orange bar. Closest and softest wins. Too high? Slip it or S-turn.' },
-  free: { name: 'Freestyle', desc: 'No clock, no score, no targets. Take the truck anywhere on the map: run the slot canyons on the mesa, fly the canyon, drive the mountain roads and tunnels, lap the circuit, land on a bridge. Crash and you carry on from where you were. Tab opens a map to teleport anywhere.' },
-  drift: { name: 'Arcade Drift', desc: 'Pure video game. The truck on the circuit with fake physics: the nose goes where you steer, the tail hangs out, and nothing can kill it. No crashes, no rollovers, walls just bounce you. Slide for points: the longer you hold a drift the bigger the multiplier, and touching a barrier drops it. I gas, K brake, J/L steer, B handbrake for big angle. Two minutes.' },
+  free: { name: 'Freestyle', desc: 'No clock, no score, no targets. Take the bike anywhere on the map: run the slot canyons on the mesa, fly the canyon, ride the mountain roads and the gorges they cut, lap the circuit, land on a bridge. Crash and you carry on from where you were. Tab opens a map to teleport anywhere.' },
+  drift: { name: 'Arcade Drift', desc: 'Pure video game. The bike on the circuit with fake physics: the nose goes where you steer, the tail hangs out, and nothing can kill it. No crashes, no rollovers, walls just bounce you. Slide for points: the longer you hold a drift the bigger the multiplier, and touching a barrier drops it. I gas, K brake, J/L steer, B handbrake for big angle. Two minutes.' },
   truck: { name: 'Truck Bomb', desc: 'A pickup is doing laps on the dirt road with a target in the bed. Bomb it. It speeds up every time you hit it. Eight balls, two minutes.' },
 });
 const SPOT_Z = 110;
@@ -2337,7 +2327,7 @@ function randomDrop() {
 const GLIDE_MODES = { thermal: 1, rims: 1, tumble: 1 };
 Object.assign(MODE_INFO, {
   thermal: { name: 'Thermal Hunter', desc: 'No engine, so stay up on rising air. You start high with the wings out; find a thermal (a cloud on top, hawks circling in it), circle tight in the core and climb, then glide to the next one. One point a second and one per 10 m flown. It ends when the wheels touch.' },
-  rims: { name: 'Rim to Rim', desc: 'Six landing pads on the mesa tops, a canyon or a crevice between each pair. Drive at the rim flat out, press C as you leave it, glide across and stop on the next pad. Fall short and you are back on the last pad, +10 seconds.' },
+  rims: { name: 'Rim to Rim', desc: 'Six landing pads on the mesa tops, a canyon or a crevice between each pair. Ride at the rim flat out, press G as you leave it, glide across and stop on the next pad. Fall short and you are back on the last pad, +10 seconds.' },
   tumble: { name: 'Tumble Drop', desc: 'Five drops. Each one starts 300 m up, upside down and tumbling, near a landing pad. Roll it upright fast (points for every metre you have left), then glide down and land on the pad, soft. Crash and that drop scores nothing.' },
   free: { name: 'Free Roam', desc: 'No clock, no score. Drive anywhere, run the slot canyons on the mesa, ride thermals, launch off rims. Crash and you carry on from where you were. Tab opens a map to teleport anywhere. Off the edge of the map, you get dropped somewhere random, upside down.' },
 });
@@ -2502,11 +2492,11 @@ function glideTarget() {
 
 // ---------- sticky stick: keys move the stick and it stays where you leave it ----------
 let stickyOn = false;
-try { stickyOn = localStorage.getItem('rimrunner-sticky') === '1'; } catch (e) {}
+try { stickyOn = localStorage.getItem('rimrider-sticky') === '1'; } catch (e) {}
 const STK = { p: 0, r: 0, y: 0 };
 function setSticky(on) {
   stickyOn = on; STK.p = STK.r = STK.y = 0;
-  try { localStorage.setItem('rimrunner-sticky', on ? '1' : '0'); } catch (e) {}
+  try { localStorage.setItem('rimrider-sticky', on ? '1' : '0'); } catch (e) {}
   $('stickybtn').textContent = `Sticky stick: ${on ? 'ON' : 'off'}`;
   toast(on ? 'Sticky stick on. Z centers it' : 'Sticky stick off');
 }
@@ -2969,11 +2959,11 @@ window.addEventListener('keydown', e => {
     return;
   }
   if (e.code === 'Tab') { e.preventDefault(); if (!e.repeat && $('help').hidden) toggleTp(); return; }
-  if (e.code === 'KeyH' && !e.repeat) { toggleHelp(); return; }
+  if ((e.code === 'F1' || e.code === 'Backquote') && !e.repeat) { e.preventDefault(); toggleHelp(); return; }
   if (e.code === 'Escape' && !$('help').hidden) { toggleHelp(); return; }
   if (!e.repeat && e.code === 'KeyU') { SND.on = !SND.on; toast(SND.on ? 'Sound on' : 'Sound off'); }
   if (!e.repeat && e.code === 'KeyN') mapBig = !mapBig;
-  if (!e.repeat && e.code === 'KeyY') setSticky(!stickyOn);
+  if (!e.repeat && e.code === 'Semicolon') setSticky(!stickyOn);
   if (!e.repeat && (e.code === 'Minus' || e.code === 'Equal')) mapR = Math.max(400, Math.min(4500, mapR * (e.code === 'Minus' ? 1.4 : 1 / 1.4)));
   if (e.code === 'KeyO' && !e.repeat) { $('tw').hidden = !$('tw').hidden; return; }
   if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) e.preventDefault();
@@ -3004,8 +2994,8 @@ window.addEventListener('keydown', e => {
       toast(deg ? `Flaps ${deg}°` : 'Flaps up');
     }
     if (e.code === 'Slash') { P.trim = 0; toast('Trim neutral'); }
-    if (e.code === 'KeyC') {
-      if (AC.wings) { P.wingT = P.wingT ? 0 : 1; if (!P.wingT) P.flapT = 0; toast(P.wingT ? 'Wings out' : 'Wings folded'); }
+    if (e.code === 'KeyG' || e.code === 'KeyC') {
+      if (AC.wings) { P.wingT = P.wingT ? 0 : 1; if (!P.wingT) P.flapT = 0; toast(P.wingT ? 'Glider' : 'Bike'); }
       else { sightOn = !sightOn; toast(sightOn ? 'Bomb sight on' : 'Bomb sight off, eyeball it'); }
     }
     if (e.code === 'KeyX') { mixOn = !mixOn; toast(mixOn ? 'Aileron-rudder mix on' : 'Mix off, feet on your own'); }
@@ -3063,13 +3053,11 @@ function setPhone(on) {
   touchLayout();
 }
 {
-  let sv = null; try { sv = localStorage.getItem('rimrunner-phone'); } catch (e) {}
+  let sv = null; try { sv = localStorage.getItem('rimrider-phone'); } catch (e) {}
   const touchy = !!(window.matchMedia && matchMedia('(pointer: coarse)').matches); // phones and tablets, not touch-screen laptops
   setPhone(sv ? sv === '1' : touchy);
-  let wv = null; try { wv = localStorage.getItem('rimrunner-wing'); } catch (e) {}
-  setWing(WINGS[wv] ? wv : 'glider');
-  document.querySelectorAll('#wingpick button').forEach(b => b.addEventListener('click', () => { b.blur(); setWing(b.dataset.w); try { localStorage.setItem('rimrunner-wing', wingId); } catch (e) {} }));
-  document.querySelectorAll('#ctlpick button').forEach(b => b.addEventListener('click', () => { b.blur(); setPhone(b.dataset.c === 'phone'); try { localStorage.setItem('rimrunner-phone', TOUCH.on ? '1' : '0'); } catch (e) {} if (TOUCH.on) tiltEnable(); }));
+  setWing('speed');
+  document.querySelectorAll('#ctlpick button').forEach(b => b.addEventListener('click', () => { b.blur(); setPhone(b.dataset.c === 'phone'); try { localStorage.setItem('rimrider-phone', TOUCH.on ? '1' : '0'); } catch (e) {} if (TOUCH.on) tiltEnable(); }));
   $('startbtn').addEventListener('click', () => {
     tiltEnable(); audioInit();
     // full screen and locked sideways where the browser allows it (Android); iPhones just ignore this
@@ -3210,7 +3198,7 @@ const TW_DEF = [
 ];
 const TW = { thrRate: 1 };
 TW_DEF.forEach(([k]) => { if (k !== '#') TW[k] = 1; });
-try { Object.assign(TW, JSON.parse(localStorage.getItem('rimrunner-tweaks') || '{}')); } catch (e) {}
+try { Object.assign(TW, JSON.parse(localStorage.getItem('rimrider-tweaks') || '{}')); } catch (e) {}
 function buildTweaks() {
   const list = $('twlist'); list.innerHTML = '';
   TW_DEF.forEach(([k, label, mn, mx]) => {
@@ -3220,14 +3208,14 @@ function buildTweaks() {
     const inp = row.querySelector('input'), val = row.querySelector('span');
     const show = () => { val.textContent = `${(+TW[k]).toFixed(2)}×`; };
     inp.value = TW[k]; show();
-    inp.addEventListener('input', () => { TW[k] = +inp.value; show(); try { localStorage.setItem('rimrunner-tweaks', JSON.stringify(TW)); } catch (e) {} });
+    inp.addEventListener('input', () => { TW[k] = +inp.value; show(); try { localStorage.setItem('rimrider-tweaks', JSON.stringify(TW)); } catch (e) {} });
     inp.addEventListener('pointerup', () => inp.blur());
     inp.addEventListener('change', () => inp.blur());
     list.appendChild(row);
   });
 }
 $('twbtn').addEventListener('click', () => { $('tw').hidden = !$('tw').hidden; $('twbtn').blur(); });
-$('twreset').addEventListener('click', () => { TW_DEF.forEach(([k]) => { if (k !== '#') TW[k] = 1; }); try { localStorage.removeItem('rimrunner-tweaks'); } catch (e) {} buildTweaks(); $('twreset').blur(); });
+$('twreset').addEventListener('click', () => { TW_DEF.forEach(([k]) => { if (k !== '#') TW[k] = 1; }); try { localStorage.removeItem('rimrider-tweaks'); } catch (e) {} buildTweaks(); $('twreset').blur(); });
 buildTweaks();
 
 // ---------- hydrofoil: buoyant hull, foils that lift it out of the water, waterjet, rudder ----------
@@ -3407,9 +3395,9 @@ function stepPlane(dt) {
   else { const grow = steerIn !== 0 && (P.steer === 0 || Math.sign(steerIn) === Math.sign(P.steer)) && Math.abs(steerIn) > Math.abs(P.steer);
     const sr = grow ? 3.2 / Math.max(0.05, TW.rampIn) : 7 / Math.max(0.05, TW.rampOut);
     P.steer += Math.max(-sr * dt, Math.min(sr * dt, steerIn - P.steer)); }
-  // T / G (or , / .) trim the nose down / up
-  if (k('Comma') || k('KeyT')) P.trim = Math.max(-1, P.trim - dt * 0.35);
-  if (k('Period') || k('KeyG')) P.trim = Math.min(1, P.trim + dt * 0.35);
+  // Y / H (or , / .) trim the nose down / up
+  if (k('Comma') || k('KeyY')) P.trim = Math.max(-1, P.trim - dt * 0.35);
+  if (k('Period') || k('KeyH')) P.trim = Math.min(1, P.trim + dt * 0.35);
   const yawMix = Math.max(-1, Math.min(1, yaw + (A.car ? 0 : mixOn && !A.heli ? roll * 0.55 * TW.mix : 0)));
   ctl.p = ease(ctl.p, pitch, dt); ctl.r = ease(ctl.r, roll, dt); ctl.y = ease(ctl.y, yawMix, dt);
 
@@ -3737,7 +3725,7 @@ function endRound() {
   const tBonus = allHit ? Math.round(game.time) * 2 : 0;
   const bBonus = game.balls * 10;
   game.score += tBonus + bBonus;
-  if (game.score > best) { best = game.score; try { localStorage.setItem('rimrunner-best', String(best)); } catch (e) {} }
+  if (game.score > best) { best = game.score; try { localStorage.setItem('rimrider-best', String(best)); } catch (e) {} }
   $('overtitle').textContent = allHit ? `Round ${game.round} cleared` : `Round ${game.round} over`;
   $('rows').innerHTML = `<span>Target points</span><b>${game.roundHits}</b><span>Time bonus</span><b>${allHit ? tBonus : '0 (missed a target)'}</b><span>Unused balls</span><b>${bBonus}</b><span>Total score</span><b>${game.score}</b>`;
   $('overgo').textContent = `Enter for round ${game.round + 1}, M for menu`;
@@ -4113,6 +4101,40 @@ function loop(now) {
       bodyP = B.p = lim(B.p, 0.2); bodyR = B.r = lim(B.r, 0.22);
       pt.body.rotation.set(bodyP, 0, bodyR);
     }
+    if (pt.bike) {
+      // the bike leans into turns by the angle a real one would need (atan of speed x yaw rate / g), pivoting on the
+      // tire contact line, and straightens up in the air. tuck is the morph: 0 bike, 1 glider. It follows the wings,
+      // except near the ground, where the pod opens and the wheels come back down to land on.
+      const B = pt.bike, RD = pt.rider, onG = P.wheels >= 2 && !P.crashed, sp = P.v.length();
+      const yawRate = P.w.clone().applyQuaternion(P.q).y;
+      const wantL = onG && sp > 2 ? Math.max(-0.85, Math.min(0.85, Math.atan(sp * yawRate / 9.8))) : 0;
+      B.lean += (wantL - B.lean) * (1 - Math.exp(-dt * 7));
+      const agl = P.pos.y - groundAt(P.pos.x, P.pos.z, P.pos.y);
+      B.tuck += (P.wing * smooth(1.4, 4, agl) - B.tuck) * (1 - Math.exp(-dt * 6));
+      const t = B.tuck, L = B.lean, c0 = 0.78;
+      pt.body.rotation.set(bodyP * (1 - t), 0, L);
+      pt.body.position.set(-c0 * Math.sin(L), -c0 + c0 * Math.cos(L), 0);
+      // suspension: the fork legs slide and the swingarm swings by how far the physics has each end compressed
+      const cmp = i0 => Math.max(AC.wheels[i0].cmp || 0, AC.wheels[i0 + 1].cmp || 0), lim = (v, a, b) => Math.max(a, Math.min(b, v));
+      const dF = lim(cmp(0), 0, 0.4) - 0.12, dR = lim(cmp(2), 0, 0.4) - 0.12;
+      B.forkT.rotation.x = B.RAKE - t * 0.9;
+      B.lower.position.y += (-B.FORK + dF / Math.cos(B.RAKE) + t * 0.38 - B.lower.position.y) * Math.min(1, dt * 30);
+      B.swing.rotation.x += (-Math.asin(lim(dR / B.swL, -0.9, 0.9)) - t * 0.55 - B.swing.rotation.x) * Math.min(1, dt * 30);
+      pt.wheelSpin.forEach(w => w.scale.setScalar(1 - 0.3 * t));
+      B.bk.visible = t < 0.93; B.pod.visible = t > 0.03; B.pod.scale.setScalar(0.3 + 0.7 * t);
+      // the rider goes prone inside the pod
+      RD.rider.rotation.x = -1.2 * t; RD.rider.position.set(0, 0.3 - 0.1 * t, 0.15 + 0.2 * t);
+      if (B.bk.visible) {
+        AC.model.updateMatrixWorld(true);
+        const loc = (o, x, y, z) => B.bk.worldToLocal(o.localToWorld(new V3(x, y, z)));
+        const seg = (m, a, b, r) => { const d = b.clone().sub(a), l = Math.max(1e-3, d.length()); m.position.copy(a).addScaledVector(d, 0.5); m.scale.set(r, l, r); m.quaternion.setFromUnitVectors(new V3(0, 1, 0), d.divideScalar(l)); };
+        const joint = (a, b, len, bend) => { const h = Math.sqrt(Math.max(0, len * len - a.distanceToSquared(b) / 4)); return a.clone().lerp(b, 0.5).addScaledVector(bend, h); };
+        RD.arms.forEach(a => { const sh = loc(RD.rider, a.sd * 0.17, 0.46, -0.2), gr = loc(B.steer, a.sd * 0.38, 0.19, 0.12);
+          const el = joint(sh, gr, 0.3, new V3(a.sd * 0.7, -0.3, 0.65).normalize()); seg(a.up, sh, el, 0.05); seg(a.lo, el, gr, 0.042); a.hand.position.copy(gr); });
+        RD.legs.forEach(l => { const hp = loc(RD.rider, l.sd * 0.11, 0.0, 0.03), pg = new V3(l.sd * 0.2, -0.2, 0.1);
+          const kn = joint(hp, pg, 0.42, new V3(l.sd * 0.35, 0.25, -1).normalize()); seg(l.up, hp, kn, 0.075); seg(l.lo, kn, pg, 0.06); l.foot.position.set(l.sd * 0.21, -0.22, 0.08); });
+      }
+    }
     // sprung gear legs swing up and out by however far the physics has that wheel compressed (plus, on a sprung
     // body, however far that corner of the body has dropped onto it)
     if (AC.gear) AC.gear.forEach((g, i) => {
@@ -4184,16 +4206,16 @@ document.querySelectorAll('#gfx button').forEach(b => {
   b.addEventListener('click', () => {
     b.blur();
     if (b.dataset.g === GFX_PICK.id && !GFX_PICK.auto) return;
-    try { localStorage.setItem('rimrunner-gfx', b.dataset.g); } catch (e) {}
+    try { localStorage.setItem('rimrider-gfx', b.dataset.g); } catch (e) {}
     const u = new URL(location.href); u.searchParams.delete('gfx'); location.replace(u.href.split('#')[0]);
   });
 });
 // lives: picked on the menu and remembered
 {
-  let sv = '0'; try { sv = localStorage.getItem('rimrunner-lives') || '0'; } catch (e) {}
+  let sv = '0'; try { sv = localStorage.getItem('rimrider-lives') || '0'; } catch (e) {}
   const set = v => { LIVES = v === 'inf' ? Infinity : Math.max(0, parseInt(v, 10) || 0); game.lives = LIVES; document.querySelectorAll('#livespick button').forEach(b => b.classList.toggle('on', b.dataset.l === v)); };
   set(['0', '3', '5', '10', 'inf'].includes(sv) ? sv : '0');
-  document.querySelectorAll('#livespick button').forEach(b => b.addEventListener('click', () => { b.blur(); set(b.dataset.l); try { localStorage.setItem('rimrunner-lives', b.dataset.l); } catch (e) {} }));
+  document.querySelectorAll('#livespick button').forEach(b => b.addEventListener('click', () => { b.blur(); set(b.dataset.l); try { localStorage.setItem('rimrider-lives', b.dataset.l); } catch (e) {} }));
 }
 setAircraft('buggy');
 setWind(); wind.copy(baseWind);
